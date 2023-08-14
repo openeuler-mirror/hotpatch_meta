@@ -1,0 +1,28 @@
+From a73f3c6fb396fbbb572f413864baff77daa21d7c Mon Sep 17 00:00:00 2001
+From: Zorro_cn <1228431093@qq.com>
+Date: Mon, 26 Jun 2023 21:26:45 +0800
+Subject: [PATCH] update
+
+---
+ fs/proc/version.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/fs/proc/version.c b/fs/proc/version.c
+index b449f186577f..366ee0ca1cc2 100644
+--- a/fs/proc/version.c
++++ b/fs/proc/version.c
+@@ -8,10 +8,7 @@
+ 
+ static int version_proc_show(struct seq_file *m, void *v)
+ {
+-	seq_printf(m, linux_proc_banner,
+-		utsname()->sysname,
+-		utsname()->release,
+-		utsname()->version);
++	seq_printf(m, "hotpatch test\n");
+ 	return 0;
+ }
+ 
+-- 
+Gitee
+
