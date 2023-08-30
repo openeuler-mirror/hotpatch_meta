@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/HotPatch_metadata">
+    <DocumentTitle xml:lang="en" type="ACC">Managing Hot Patch Metadata</DocumentTitle>
+    <HotPatchList>
+        <Package name="kernel-5.10.0-153.12.0.92">
+            <hotpatch version="1" release="1" type="cve" inherit="0" status="unconfirmed">
+                <SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP2/source/Packages/kernel-5.10.0-153.12.0.92.oe2203sp2.src.rpm</SRC_RPM>
+                <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP2/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-153.12.0.92.oe2203sp2.x86_64.rpm</Debug_RPM_X86_64>
+                <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP2/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-153.12.0.92.oe2203sp2.aarch64.rpm</Debug_RPM_Aarch64>
+                <patch>fix-the-CVE-2023-3389-for-kernel-5.10.0-153.12.0.92.oe2203sp2.patch</patch>
+                <issue id="CVE-2023-3389" issue_href="https://gitee.com/src-openeuler/kernel/issues/I7GVI5"/>
+                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/I7WT55</hotpatch_issue_link>
+            </hotpatch>
+        </Package>
+    </HotPatchList>
+</ns0:hotpatchdoc>
+
