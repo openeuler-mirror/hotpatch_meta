@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/HotPatch_metadata">
+<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/hotpatch_meta">
     <DocumentTitle xml:lang="en" type="ACC">Managing Hot Patch Metadata</DocumentTitle>
     <HotPatchList>
         <Package name="kernel-5.10.0-153.12.0.92">

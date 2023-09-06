@@ -29,8 +29,8 @@ version：基于哪个版本的源码制作热补丁
 hotmetadata_ACC.xml格式示例：
 ```xml
 <?xml version="1.0" ?>
-<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/HotPatch_metadata">
-	<DocumentTitle xml:lang="en">Managing Hot Patch Metadata</DocumentTitle>
+<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/hotpatch_meta">
+	<DocumentTitle xml:lang="en" type="ACC">Managing Hot Patch Metadata</DocumentTitle>
 	<HotPatchList>
 		<Package name="源码仓库-版本号">
 			<hotpatch version="1" release="1" type="修复问题类型[cve/bugfix/feature]" inherit="0" status="unconfirmed">
@@ -58,8 +58,8 @@ hotmetadata_ACC.xml格式示例：
 hotmetadata_SGL.xml格式示例：
 ```xml
 <?xml version="1.0" ?>
-<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/HotPatch_metadata">
-	<DocumentTitle xml:lang="en">Managing Hot Patch Metadata</DocumentTitle>
+<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/hotpatch_meta">
+	<DocumentTitle xml:lang="en" type="SGL">Managing Hot Patch Metadata</DocumentTitle>
 	<HotPatchList>
 		<Package name="源码仓库-版本号">
 			<hotpatch name="SGL-issue1-issue2" version="1" release="1" type="修复问题类型[cve/bugfix/feature]" inherit="0" status="unconfirmed">
