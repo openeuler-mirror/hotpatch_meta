@@ -1,0 +1,60 @@
+From ade770aefb85a3132e8c92242e1e7ed872c56689 Mon Sep 17 00:00:00 2001
+From: Namjae Jeon <linkinjeon@kernel.org>
+Date: Tue, 29 Aug 2023 09:30:20 +0800
+Subject: [PATCH] ksmbd: fix out-of-bound read in smb2_write
+
+mainline inclusion
+from mainline-v6.4-rc6
+commit 5fe7f7b78290638806211046a99f031ff26164e1
+category: bugfix
+bugzilla: https://gitee.com/src-openeuler/kernel/issues/I7ST5T
+CVE: CVE-2023-3865
+
+Reference: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?h=v6.5-rc5&id=5fe7f7b78290638806211046a99f031ff26164e1
+
+--------------------------------
+
+ksmbd_smb2_check_message doesn't validate hdr->NextCommand. If
+->NextCommand is bigger than Offset + Length of smb2 write, It will
+allow oversized smb2 write length. It will cause OOB read in smb2_write.
+
+Cc: stable@vger.kernel.org
+Reported-by: zdi-disclosures@trendmicro.com # ZDI-CAN-21164
+Signed-off-by: Namjae Jeon <linkinjeon@kernel.org>
+Signed-off-by: Steve French <stfrench@microsoft.com>
+
+Conflict:
+  fs/ksmbd/smb2misc.c
+Signed-off-by: Li Lingfeng <lilingfeng3@huawei.com>
+(cherry picked from commit a85ddaec0be88820106cf9542eb9858980fd80ac)
+---
+ fs/ksmbd/smb2misc.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/fs/ksmbd/smb2misc.c b/fs/ksmbd/smb2misc.c
+index ea78f065c8cf..41170a593acf 100644
+--- a/fs/ksmbd/smb2misc.c
++++ b/fs/ksmbd/smb2misc.c
+@@ -356,10 +356,16 @@ int ksmbd_smb2_check_message(struct ksmbd_work *work)
+ 	int command;
+ 	__u32 clc_len;  /* calculated length */
+ 	__u32 len = get_rfc1002_len(work->request_buf);
+-	__u32 req_struct_size;
++	__u32 req_struct_size, next_cmd = le32_to_cpu(hdr->NextCommand);
+ 
+-	if (le32_to_cpu(hdr->NextCommand) > 0)
+-		len = le32_to_cpu(hdr->NextCommand);
++	if ((u64)work->next_smb2_rcv_hdr_off + next_cmd > len) {
++		pr_err("next command(%u) offset exceeds smb msg size\n",
++				next_cmd);
++		return 1;
++	}
++
++	if (next_cmd > 0)
++		len = next_cmd;
+ 	else if (work->next_smb2_rcv_hdr_off)
+ 		len -= work->next_smb2_rcv_hdr_off;
+ 
+-- 
+Gitee
+
