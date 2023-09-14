@@ -1,0 +1,32 @@
+From ed8af0502167c80ba70522d88e719f874e24ebfd Mon Sep 17 00:00:00 2001
+From: Bernd Edlinger <bernd.edlinger@hotmail.de>
+Date: Fri, 16 Dec 2022 19:30:29 +0100
+Subject: [PATCH] Fix a logic flaw in test_mod_exp_zero
+
+Due to the logic flaw, possible test failures
+in this test case might be ignored.
+
+Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
+Reviewed-by: Tomas Mraz <tomas@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/19929)
+
+(cherry picked from commit 42061268ee8f9ae0555d522870740fc91b744f4f)
+---
+ test/exptest.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/exptest.c b/test/exptest.c
+index cde4d6bc45..a327773ec4 100644
+--- a/test/exptest.c
++++ b/test/exptest.c
+@@ -49,7 +49,7 @@ static int test_mod_exp_zero(void)
+     BIGNUM *r = NULL;
+     BN_ULONG one_word = 1;
+     BN_CTX *ctx = BN_CTX_new();
+-    int ret = 1, failed = 0;
++    int ret = 0, failed = 0;
+ 
+     if (!TEST_ptr(m = BN_new())
+         || !TEST_ptr(a = BN_new())
+-- 
+2.36.1

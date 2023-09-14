@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/hotpatch_meta">
+	<DocumentTitle xml:lang="en" type="ACC">Managing Hot Patch Metadata</DocumentTitle>
+	<HotPatchList>
+		<Package name="openssl-1.1.1m-16">
+			<hotpatch version="1" release="1" type="feature" inherit="0" status="unconfirmed">
+				<SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/update/source/Packages/openssl-1.1.1m-16.oe2203sp1.src.rpm</SRC_RPM>
+				<Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/update/x86_64/Packages/openssl-debuginfo-1.1.1m-16.oe2203sp1.x86_64.rpm</Debug_RPM_X86_64>
+				<Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/update/aarch64/Packages/openssl-debuginfo-1.1.1m-16.oe2203sp1.aarch64.rpm</Debug_RPM_Aarch64>
+				<patch>backport-Fix-a-logic-flaw-in-test_mod_exp_zero.patch</patch>
+				<issue id="I6NQIV" issue_href="https://gitee.com/src-openeuler/openssl/issues/I6NQIV"/>
+				<hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/I81HAG</hotpatch_issue_link>
+			</hotpatch>
+		</Package>
+	</HotPatchList>
+</ns0:hotpatchdoc>
