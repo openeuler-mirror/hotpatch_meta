@@ -11,6 +11,14 @@
 				<issue id="I7T0TL" issue_href="https://gitee.com/src-openeuler/systemd/issues/I7T0TL"/>
 				<hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/I8286Q</hotpatch_issue_link>
 			</hotpatch>
+			<hotpatch type="feature" inherit="0" status="unconfirmed">
+				<SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP2/source/Packages/systemd-249-52.oe2203sp2.src.rpm</SRC_RPM>
+				<Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP2/debuginfo/x86_64/Packages/systemd-debuginfo-249-52.oe2203sp2.x86_64.rpm</Debug_RPM_X86_64>
+				<Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP2/debuginfo/aarch64/Packages/systemd-debuginfo-249-52.oe2203sp2.aarch64.rpm</Debug_RPM_Aarch64>
+				<patch>backport-core-Check-unit-start-rate-limiting-earlier.patch</patch>
+				<issue id="I7T0TL" issue_href="https://gitee.com/src-openeuler/systemd/issues/I7T0TL"/>
+				<hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/I82876</hotpatch_issue_link>
+			</hotpatch>
 		</Package>
 	</HotPatchList>
 </ns0:hotpatchdoc>
