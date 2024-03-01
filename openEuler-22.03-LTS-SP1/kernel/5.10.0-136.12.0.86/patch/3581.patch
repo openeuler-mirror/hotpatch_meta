@@ -1,0 +1,217 @@
+From e948268ed32b0740b90f4a23d610cc6ae0324952 Mon Sep 17 00:00:00 2001
+From: Peter Zijlstra <peterz@infradead.org>
+Date: Tue, 26 Dec 2023 00:40:25 +0000
+Subject: [PATCH 1/2] perf: Fix perf_event_validate_size()
+
+stable inclusion
+from stable-v5.10.204
+commit 208dd116f96ea19e5d38d7b80fce49bc5ce1bbe8
+category: bugfix
+bugzilla: https://gitee.com/src-openeuler/kernel/issues/I8PT55
+CVE: CVE-2023-6931
+
+Reference: https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?id=208dd116f96ea19e5d38d7b80fce49bc5ce1bbe8
+
+--------------------------------
+
+[ Upstream commit 382c27f4ed28f803b1f1473ac2d8db0afc795a1b ]
+
+Budimir noted that perf_event_validate_size() only checks the size of
+the newly added event, even though the sizes of all existing events
+can also change due to not all events having the same read_format.
+
+When we attach the new event, perf_group_attach(), we do re-compute
+the size for all events.
+
+Fixes: a723968c0ed3 ("perf: Fix u16 overflows")
+Reported-by: Budimir Markovic <markovicbudimir@gmail.com>
+Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Yang Jihong <yangjihong1@huawei.com>
+(cherry picked from commit 3e976d32143dcb47ae715a3eeaae20785cd81d67)
+---
+ kernel/events/core.c | 59 +++++++++++++++++++++++++++-----------------
+ 1 file changed, 37 insertions(+), 22 deletions(-)
+
+diff --git a/kernel/events/core.c b/kernel/events/core.c
+index 55c14e32a3cd..0086f99096da 100644
+--- a/kernel/events/core.c
++++ b/kernel/events/core.c
+@@ -1826,28 +1826,31 @@ static inline void perf_event__state_init(struct perf_event *event)
+ 					      PERF_EVENT_STATE_INACTIVE;
+ }
+ 
+-static void __perf_event_read_size(struct perf_event *event, int nr_siblings)
++static int __perf_event_read_size(u64 read_format, int nr_siblings)
+ {
+ 	int entry = sizeof(u64); /* value */
+ 	int size = 0;
+ 	int nr = 1;
+ 
+-	if (event->attr.read_format & PERF_FORMAT_TOTAL_TIME_ENABLED)
++	if (read_format & PERF_FORMAT_TOTAL_TIME_ENABLED)
+ 		size += sizeof(u64);
+ 
+-	if (event->attr.read_format & PERF_FORMAT_TOTAL_TIME_RUNNING)
++	if (read_format & PERF_FORMAT_TOTAL_TIME_RUNNING)
+ 		size += sizeof(u64);
+ 
+-	if (event->attr.read_format & PERF_FORMAT_ID)
++	if (read_format & PERF_FORMAT_ID)
+ 		entry += sizeof(u64);
+ 
+-	if (event->attr.read_format & PERF_FORMAT_GROUP) {
++	if (read_format & PERF_FORMAT_GROUP) {
+ 		nr += nr_siblings;
+ 		size += sizeof(u64);
+ 	}
+ 
+-	size += entry * nr;
+-	event->read_size = size;
++	/*
++	 * Since perf_event_validate_size() limits this to 16k and inhibits
++	 * adding more siblings, this will never overflow.
++	 */
++	return size + nr * entry;
+ }
+ 
+ static void __perf_event_header_size(struct perf_event *event, u64 sample_type)
+@@ -1891,8 +1894,9 @@ static void __perf_event_header_size(struct perf_event *event, u64 sample_type)
+  */
+ static void perf_event__header_size(struct perf_event *event)
+ {
+-	__perf_event_read_size(event,
+-			       event->group_leader->nr_siblings);
++	event->read_size =
++		__perf_event_read_size(event->attr.read_format,
++				       event->group_leader->nr_siblings);
+ 	__perf_event_header_size(event, event->attr.sample_type);
+ }
+ 
+@@ -1923,24 +1927,35 @@ static void perf_event__id_header_size(struct perf_event *event)
+ 	event->id_header_size = size;
+ }
+ 
++/*
++ * Check that adding an event to the group does not result in anybody
++ * overflowing the 64k event limit imposed by the output buffer.
++ *
++ * Specifically, check that the read_size for the event does not exceed 16k,
++ * read_size being the one term that grows with groups size. Since read_size
++ * depends on per-event read_format, also (re)check the existing events.
++ *
++ * This leaves 48k for the constant size fields and things like callchains,
++ * branch stacks and register sets.
++ */
+ static bool perf_event_validate_size(struct perf_event *event)
+ {
+-	/*
+-	 * The values computed here will be over-written when we actually
+-	 * attach the event.
+-	 */
+-	__perf_event_read_size(event, event->group_leader->nr_siblings + 1);
+-	__perf_event_header_size(event, event->attr.sample_type & ~PERF_SAMPLE_READ);
+-	perf_event__id_header_size(event);
++	struct perf_event *sibling, *group_leader = event->group_leader;
+ 
+-	/*
+-	 * Sum the lot; should not exceed the 64k limit we have on records.
+-	 * Conservative limit to allow for callchains and other variable fields.
+-	 */
+-	if (event->read_size + event->header_size +
+-	    event->id_header_size + sizeof(struct perf_event_header) >= 16*1024)
++	if (__perf_event_read_size(event->attr.read_format,
++				   group_leader->nr_siblings + 1) > 16*1024)
+ 		return false;
+ 
++	if (__perf_event_read_size(group_leader->attr.read_format,
++				   group_leader->nr_siblings + 1) > 16*1024)
++		return false;
++
++	for_each_sibling_event(sibling, group_leader) {
++		if (__perf_event_read_size(sibling->attr.read_format,
++					   group_leader->nr_siblings + 1) > 16*1024)
++			return false;
++	}
++
+ 	return true;
+ }
+ 
+-- 
+Gitee
+
+
+From 8fcbefb71f7aeb01f1948ab9e87d2aff0b0f7d9c Mon Sep 17 00:00:00 2001
+From: Mark Rutland <mark.rutland@arm.com>
+Date: Tue, 26 Dec 2023 00:40:26 +0000
+Subject: [PATCH 2/2] perf: Fix perf_event_validate_size() lockdep splat
+
+stable inclusion
+from stable-v5.10.205
+commit 7ccfc078cd475d11b233288c3ae3d639f7c4ce1c
+category: bugfix
+bugzilla: https://gitee.com/src-openeuler/kernel/issues/I8PT55
+CVE: NA
+
+Reference: https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?id=7ccfc078cd475d11b233288c3ae3d639f7c4ce1c
+
+--------------------------------
+
+commit 7e2c1e4b34f07d9aa8937fab88359d4a0fce468e upstream.
+
+When lockdep is enabled, the for_each_sibling_event(sibling, event)
+macro checks that event->ctx->mutex is held. When creating a new group
+leader event, we call perf_event_validate_size() on a partially
+initialized event where event->ctx is NULL, and so when
+for_each_sibling_event() attempts to check event->ctx->mutex, we get a
+splat, as reported by Lucas De Marchi:
+
+  WARNING: CPU: 8 PID: 1471 at kernel/events/core.c:1950 __do_sys_perf_event_open+0xf37/0x1080
+
+This only happens for a new event which is its own group_leader, and in
+this case there cannot be any sibling events. Thus it's safe to skip the
+check for siblings, which avoids having to make invasive and ugly
+changes to for_each_sibling_event().
+
+Avoid the splat by bailing out early when the new event is its own
+group_leader.
+
+Fixes: 382c27f4ed28f803 ("perf: Fix perf_event_validate_size()")
+Closes: https://lore.kernel.org/lkml/20231214000620.3081018-1-lucas.demarchi@intel.com/
+Closes: https://lore.kernel.org/lkml/ZXpm6gQ%2Fd59jGsuW@xpf.sh.intel.com/
+Reported-by: Lucas De Marchi <lucas.demarchi@intel.com>
+Reported-by: Pengfei Xu <pengfei.xu@intel.com>
+Signed-off-by: Mark Rutland <mark.rutland@arm.com>
+Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+Link: https://lkml.kernel.org/r/20231215112450.3972309-1-mark.rutland@arm.com
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Yang Jihong <yangjihong1@huawei.com>
+(cherry picked from commit 8a9977c11dc0d192fb96a45de7b3cd58f511fbc8)
+---
+ kernel/events/core.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/kernel/events/core.c b/kernel/events/core.c
+index 0086f99096da..3527d376e153 100644
+--- a/kernel/events/core.c
++++ b/kernel/events/core.c
+@@ -1950,6 +1950,16 @@ static bool perf_event_validate_size(struct perf_event *event)
+ 				   group_leader->nr_siblings + 1) > 16*1024)
+ 		return false;
+ 
++	/*
++	 * When creating a new group leader, group_leader->ctx is initialized
++	 * after the size has been validated, but we cannot safely use
++	 * for_each_sibling_event() until group_leader->ctx is set. A new group
++	 * leader cannot have any siblings yet, so we can safely skip checking
++	 * the non-existent siblings.
++	 */
++	if (event == group_leader)
++		return true;
++
+ 	for_each_sibling_event(sibling, group_leader) {
+ 		if (__perf_event_read_size(sibling->attr.read_format,
+ 					   group_leader->nr_siblings + 1) > 16*1024)
+-- 
+Gitee
+
