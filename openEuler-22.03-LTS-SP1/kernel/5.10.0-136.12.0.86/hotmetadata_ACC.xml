@@ -11,7 +11,7 @@
 				<issue id="CVE-2023-4622" issue_href="https://gitee.com/src-openeuler/kernel/issues/I7Z7C9"/>
 				<hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/I967UT</hotpatch_issue_link>
 			</hotpatch>
-			<hotpatch version="1" release="2" type="cve" inherit="0" status="unconfirmed">
+			<hotpatch version="1" release="2" type="cve" inherit="0" status="confirmed">
                                 <SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/hotpatch_update/source/Packages/kernel-5.10.0-136.12.0.86.oe2203sp1-ACC-1-1.src.rpm</SRC_RPM>
                                 <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-136.12.0.86.oe2203sp1.x86_64.rpm</Debug_RPM_X86_64>
                                 <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-136.12.0.86.oe2203sp1.aarch64.rpm</Debug_RPM_Aarch64>
@@ -19,6 +19,14 @@
 				<patch>fix-the-CVE-2023-6931-for-kernel-5.10.0-136.12.0.86.oe2203sp1-02.patch</patch>
                                 <issue id="CVE-2023-6931" issue_href="https://gitee.com/src-openeuler/kernel/issues/I8PT55"/>
                                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/I9525H</hotpatch_issue_link>
+			</hotpatch>
+			<hotpatch version="1" release="3" type="cve" inherit="0" status="unconfirmed">
+                                <SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/hotpatch_update/source/Packages/kernel-5.10.0-136.12.0.86.oe2203sp1-ACC-1-2.src.rpm</SRC_RPM>
+                                <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-136.12.0.86.oe2203sp1.x86_64.rpm</Debug_RPM_X86_64>
+                                <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-136.12.0.86.oe2203sp1.aarch64.rpm</Debug_RPM_Aarch64>
+                                <patch>fix-the-CVE-2023-51043-for-kernel-5.10.0-136.12.0.86.oe2203sp1.patch</patch>
+                                <issue id="CVE-2023-51043" issue_href="https://gitee.com/src-openeuler/kernel/issues/I8YD5O"/>
+                                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/I999RD</hotpatch_issue_link>
                         </hotpatch>
 		</Package>
 	</HotPatchList>
