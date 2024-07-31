@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/hotpatch_meta">
+    <DocumentTitle xml:lang="en" type="ACC">Managing Hot Patch Metadata</DocumentTitle>
+    <HotPatchList>
+        <Package name="kernel-4.19.90-2312.1.0.0255">
+            <hotpatch version="1" release="1" type="cve" inherit="0" status="unconfirmed">
+                <SRC_RPM>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/source/Packages/kernel-4.19.90-2312.1.0.0255.oe2003sp4.src.rpm</SRC_RPM>
+                <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/debuginfo/x86_64/Packages/kernel-debuginfo-4.19.90-2312.1.0.0255.oe2003sp4.x86_64.rpm</Debug_RPM_X86_64>
+                <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/debuginfo/aarch64/Packages/kernel-debuginfo-4.19.90-2312.1.0.0255.oe2003sp4.aarch64.rpm</Debug_RPM_Aarch64>
+                <patch>fix-the-CVE-2023-51043-for-kernel-4.19.90-2312.1.0.0255.oe2003sp4.patch</patch>
+                <issue id="CVE-2023-51043" issue_href="https://gitee.com/src-openeuler/kernel/issues/I8YD5O"/>
+                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IAF4H2</hotpatch_issue_link>
+            </hotpatch>
+        </Package>
+    </HotPatchList>
+</ns0:hotpatchdoc>
