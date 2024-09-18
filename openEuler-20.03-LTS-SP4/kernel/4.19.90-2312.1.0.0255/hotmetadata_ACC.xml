@@ -32,13 +32,21 @@
 		<issue id="CVE-2024-26934" issue_href="https://gitee.com/src-openeuler/kernel/issues/I9L5GW"/>
                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IAJSKW</hotpatch_issue_link>
 	</hotpatch>
-	<hotpatch version="1" release="4" type="cve" inherit="0" status="unconfirmed">
+	<hotpatch version="1" release="4" type="cve" inherit="0" status="confirmed">
                 <SRC_RPM>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/hotpatch_update/source/Packages/kernel-4.19.90-2312.1.0.0255.oe2003sp4-ACC-1-3.src.rpm</SRC_RPM>
                 <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/debuginfo/x86_64/Packages/kernel-debuginfo-4.19.90-2312.1.0.0255.oe2003sp4.x86_64.rpm</Debug_RPM_X86_64>
                 <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/debuginfo/aarch64/Packages/kernel-debuginfo-4.19.90-2312.1.0.0255.oe2003sp4.aarch64.rpm</Debug_RPM_Aarch64>
                 <patch>fix-the-CVE-2021-47483-for-kernel-4.19.90-2312.1.0.0255.oe2003sp4.patch</patch>
                 <issue id="CVE-2021-47483" issue_href="https://gitee.com/src-openeuler/kernel/issues/I9RD9Z"/>
                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IALDPJ</hotpatch_issue_link>
+	</hotpatch>
+	<hotpatch version="1" release="5" type="cve" inherit="0" status="unconfirmed">
+                <SRC_RPM>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/hotpatch_update/source/Packages/kernel-4.19.90-2312.1.0.0255.oe2003sp4-ACC-1-4.src.rpm</SRC_RPM>
+                <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/debuginfo/x86_64/Packages/kernel-debuginfo-4.19.90-2312.1.0.0255.oe2003sp4.x86_64.rpm</Debug_RPM_X86_64>
+                <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-20.03-LTS-SP4/debuginfo/aarch64/Packages/kernel-debuginfo-4.19.90-2312.1.0.0255.oe2003sp4.aarch64.rpm</Debug_RPM_Aarch64>
+                <patch>fix-the-CVE-2024-36904-for-kernel-4.19.90-2312.1.0.0255.oe2003sp4.patch</patch>
+                <issue id="CVE-2024-36904" issue_href="https://gitee.com/src-openeuler/kernel/issues/I9U4LA"/>
+                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IARVTX</hotpatch_issue_link>
             </hotpatch>
         </Package>
     </HotPatchList>
