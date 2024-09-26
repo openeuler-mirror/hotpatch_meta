@@ -124,13 +124,23 @@
                                 <issue id="CVE-2024-36904" issue_href="https://gitee.com/src-openeuler/kernel/issues/I9U4LA"/>
                                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IAOJHV</hotpatch_issue_link>
 			</hotpatch>
-			<hotpatch version="1" release="16" type="cve" inherit="0" status="unconfirmed">
+			<hotpatch version="1" release="16" type="cve" inherit="0" status="confirmed">
                                 <SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/hotpatch_update/source/Packages/kernel-5.10.0-136.12.0.86.oe2203sp1-ACC-1-15.src.rpm</SRC_RPM>
                                 <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-136.12.0.86.oe2203sp1.x86_64.rpm</Debug_RPM_X86_64>
                                 <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-136.12.0.86.oe2203sp1.aarch64.rpm</Debug_RPM_Aarch64>
                                 <patch>fix-the-CVE-2024-26598-for-kernel-5.10.0-136.12.0.86.oe2203sp1.patch</patch>
                                 <issue id="CVE-2024-26598" issue_href="https://gitee.com/src-openeuler/kernel/issues/I93EEI"/>
                                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IARVNS</hotpatch_issue_link>
+			</hotpatch>
+			<hotpatch version="1" release="17" type="cve" inherit="0" status="unconfirmed">
+                                <SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/hotpatch_update/source/Packages/kernel-5.10.0-136.12.0.86.oe2203sp1-ACC-1-16.src.rpm</SRC_RPM>
+                                <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-136.12.0.86.oe2203sp1.x86_64.rpm</Debug_RPM_X86_64>
+                                <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP1/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-136.12.0.86.oe2203sp1.aarch64.rpm</Debug_RPM_Aarch64>
+				<patch>fix-the-CVE-2024-44986-for-kernel-5.10.0-136.12.0.86.oe2203sp1.patch</patch>
+				<patch>fix-the-CVE-2024-44987-for-kernel-5.10.0-136.12.0.86.oe2203sp1.patch</patch>
+				<issue id="CVE-2024-44986" issue_href="https://gitee.com/src-openeuler/kernel/issues/IAOXZO"/>
+				<issue id="CVE-2024-44987" issue_href="https://gitee.com/src-openeuler/kernel/issues/IAOXZH"/>
+                                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IATHQX</hotpatch_issue_link>
                         </hotpatch>
 		</Package>
 	</HotPatchList>
