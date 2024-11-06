@@ -3,7 +3,7 @@
     <DocumentTitle xml:lang="en" type="ACC">Managing Hot Patch Metadata</DocumentTitle>
     <HotPatchList>
         <Package name="kernel-6.6.0-28.0.0.34">
-            <hotpatch version="1" release="1" type="cve" inherit="0" status="unconfirmed">
+            <hotpatch version="1" release="1" type="cve" inherit="0" status="confirmed">
                 <SRC_RPM>https://repo.openeuler.org/openEuler-24.03-LTS/source/Packages/kernel-6.6.0-28.0.0.34.oe2403.src.rpm</SRC_RPM>
                 <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-24.03-LTS/debuginfo/x86_64/Packages/kernel-debuginfo-6.6.0-28.0.0.34.oe2403.x86_64.rpm</Debug_RPM_X86_64>
                 <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-24.03-LTS/debuginfo/aarch64/Packages/kernel-debuginfo-6.6.0-28.0.0.34.oe2403.aarch64.rpm</Debug_RPM_Aarch64>
@@ -11,6 +11,14 @@
 		<patch>fix-the-CVE-2024-46845-for-openEuler-24.03-LTS-02.patch</patch>
                 <issue id="CVE-2024-46845" issue_href="https://gitee.com/src-openeuler/kernel/issues/IAU9OQ"/>
                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IAXKAC</hotpatch_issue_link>
+	</hotpatch>
+        <hotpatch version="1" release="1" type="cve" inherit="0" status="unconfirmed">
+                <SRC_RPM>https://repo.openeuler.org/openEuler-24.03-LTS/source/Packages/kernel-6.6.0-28.0.0.34.oe2403.src.rpm</SRC_RPM>
+                <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-24.03-LTS/debuginfo/x86_64/Packages/kernel-debuginfo-6.6.0-28.0.0.34.oe2403.x86_64.rpm</Debug_RPM_X86_64>
+                <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-24.03-LTS/debuginfo/aarch64/Packages/kernel-debuginfo-6.6.0-28.0.0.34.oe2403.aarch64.rpm</Debug_RPM_Aarch64>
+		<patch>fix-the-CVE-2024-46858-for-openEuler-24.03-LTS-01.patch</patch>
+                <issue id="CVE-2024-46858" issue_href="https://gitee.com/src-openeuler/kernel/issues/IAU9JW"/>
+                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IB2G0X</hotpatch_issue_link>
 	</hotpatch>
         </Package>
     </HotPatchList>
