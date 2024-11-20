@@ -44,13 +44,21 @@
                 <issue id="CVE-2024-26598" issue_href="https://gitee.com/src-openeuler/kernel/issues/I93EEI"/>
                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IARW0K</hotpatch_issue_link>
 	</hotpatch>
-	<hotpatch version="1" release="5" type="cve" inherit="0" status="unconfirmed">
+	<hotpatch version="1" release="5" type="cve" inherit="0" status="confirmed">
                 <SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP3/hotpatch_update/source/Packages/kernel-5.10.0-182.0.0.95.oe2203sp3-ACC-1-4.src.rpm</SRC_RPM>
                 <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP3/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-182.0.0.95.oe2203sp3.x86_64.rpm</Debug_RPM_X86_64>
                 <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP3/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-182.0.0.95.oe2203sp3.aarch64.rpm</Debug_RPM_Aarch64>
                 <patch>fix-the-CVE-2024-36904-for-kernel-5.10.0-182.0.0.95.oe2203sp3.patch</patch>
                 <issue id="CVE-2024-36904" issue_href="https://gitee.com/src-openeuler/kernel/issues/I9U4LA"/>
                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IATHRB</hotpatch_issue_link>
+            </hotpatch>
+    <hotpatch version="1" release="6" type="cve" inherit="0" status="unconfirmed">
+                <SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP3/hotpatch_update/source/Packages/kernel-5.10.0-182.0.0.95.oe2203sp3-ACC-1-5.src.rpm</SRC_RPM>
+                <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP3/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-182.0.0.95.oe2203sp3.x86_64.rpm</Debug_RPM_X86_64>
+                <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP3/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-182.0.0.95.oe2203sp3.aarch64.rpm</Debug_RPM_Aarch64>
+                <patch>fix-the-CVE-2024-47742-for-openEuler-22.03-LTS-SP3-01.patch</patch>
+                <issue id="CVE-2024-47742" issue_href="https://gitee.com/src-openeuler/kernel/issues/IAYQRX"/>
+                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IB5PKQ</hotpatch_issue_link>
             </hotpatch>
         </Package>
     </HotPatchList>
