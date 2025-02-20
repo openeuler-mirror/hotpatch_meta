@@ -2,14 +2,22 @@
 <ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/hotpatch_meta">
     <DocumentTitle xml:lang="en" type="ACC">Managing Hot Patch Metadata</DocumentTitle>
     <HotPatchList>
-        <Package name="kernel-6.6.0-75.0.0.79">
-            <hotpatch version="1" release="1" type="cve" inherit="0" status="unconfirmed">
+        <Package name="kernel-6.6.0-72.0.0.76">
+            <hotpatch version="1" release="1" type="cve" inherit="0" status="confirmed">
                 <SRC_RPM>https://repo.openeuler.org/openEuler-24.03-LTS-SP1/source/Packages/kernel-6.6.0-72.0.0.76.oe2403sp1.src.rpm</SRC_RPM>
                 <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-24.03-LTS-SP1/debuginfo/x86_64/Packages/kernel-debuginfo-6.6.0-72.0.0.76.oe2403sp1.x86_64.rpm</Debug_RPM_X86_64>
                 <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-24.03-LTS-SP1/debuginfo/aarch64/Packages/kernel-debuginfo-6.6.0-72.0.0.76.oe2403sp1.aarch64.rpm</Debug_RPM_Aarch64>
 		        <patch>fix-the-CVE-2024-56675-for-openEuler-24.03-LTS-SP1-01.patch</patch>
                 <issue id="CVE-2024-56675" issue_href="https://gitee.com/src-openeuler/kernel/issues/IBEAKR"/>
                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IBJ80M</hotpatch_issue_link>
+	</hotpatch>
+    <hotpatch version="1" release="2" type="cve" inherit="0" status="unconfirmed">
+                <SRC_RPM>https://repo.openeuler.org/openEuler-24.03-LTS-SP1/hotpatch_update/source/Packages/kernel-6.6.0-72.0.0.76.oe2403sp1-ACC-1-1.src.rpm</SRC_RPM>
+                <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-24.03-LTS-SP1/debuginfo/x86_64/Packages/kernel-debuginfo-6.6.0-72.0.0.76.oe2403sp1.x86_64.rpm</Debug_RPM_X86_64>
+                <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-24.03-LTS-SP1/debuginfo/aarch64/Packages/kernel-debuginfo-6.6.0-72.0.0.76.oe2403sp1.aarch64.rpm</Debug_RPM_Aarch64>
+		        <patch>fix-the-CVE-2024-56672-for-openEuler-24.03-LTS-SP1-01.patch</patch>
+                <issue id="CVE-2024-56672" issue_href="https://gitee.com/src-openeuler/kernel/issues/IBEAKO"/>
+                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IBN8GB</hotpatch_issue_link>
 	</hotpatch>
         </Package>
     </HotPatchList>
