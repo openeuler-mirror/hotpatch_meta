@@ -11,7 +11,7 @@
                 <issue id="CVE-2024-47742" issue_href="https://gitee.com/src-openeuler/kernel/issues/IAYQRX"/>
                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IB5VY6</hotpatch_issue_link>
 	</hotpatch>
-    <hotpatch version="1" release="2" type="cve" inherit="0" status="unconfirmed">
+    <hotpatch version="1" release="2" type="cve" inherit="0" status="confirmed">
                 <SRC_RPM>https://repo.openeuler.org/openEuler-22.03-LTS-SP4/hotpatch_update/source/Packages/kernel-5.10.0-216.0.0.115.oe2203sp4-ACC-1-1.src.rpm</SRC_RPM>
                 <Debug_RPM_X86_64>https://repo.openeuler.org/openEuler-22.03-LTS-SP4/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-216.0.0.115.oe2203sp4.x86_64.rpm</Debug_RPM_X86_64>
                 <Debug_RPM_Aarch64>https://repo.openeuler.org/openEuler-22.03-LTS-SP4/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-216.0.0.115.oe2203sp4.aarch64.rpm</Debug_RPM_Aarch64>
@@ -19,7 +19,15 @@
                 <issue id="CVE-2024-50083" issue_href="https://gitee.com/src-openeuler/kernel/issues/IB0ENM"/>
                 <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IBLV5U</hotpatch_issue_link>
 	</hotpatch>
+    <hotpatch version="1" release="3" type="cve" inherit="0" status="unconfirmed">
+                <SRC_RPM>https://dl-cdn.openeuler.openatom.cn/openEuler-22.03-LTS-SP4/hotpatch_update/source/Packages/kernel-5.10.0-216.0.0.115.oe2203sp4-ACC-1-2.src.rpm</SRC_RPM>
+                <Debug_RPM_X86_64>https://dl-cdn.openeuler.openatom.cn/openEuler-22.03-LTS-SP4/debuginfo/x86_64/Packages/kernel-debuginfo-5.10.0-216.0.0.115.oe2203sp4.x86_64.rpm</Debug_RPM_X86_64>
+                <Debug_RPM_Aarch64>https://dl-cdn.openeuler.openatom.cn/openEuler-22.03-LTS-SP4/debuginfo/aarch64/Packages/kernel-debuginfo-5.10.0-216.0.0.115.oe2203sp4.aarch64.rpm</Debug_RPM_Aarch64>
+		        <patch>fix-the-CVE-2025-21727-for-openEuler-22.03-LTS-SP4-01.patch</patch>
+                <patch>fix-the-CVE-2025-21727-for-openEuler-22.03-LTS-SP4-02.patch</patch>
+                <issue id="CVE-2025-21727" issue_href="https://gitee.com/src-openeuler/kernel/issues/IBPBHS"/>
+                <hotpatch_issue_link>https://gitee.com/openeuler/hotpatch_meta/issues/IC1H0A</hotpatch_issue_link>
+	</hotpatch>
         </Package>
     </HotPatchList>
 </ns0:hotpatchdoc>
-
