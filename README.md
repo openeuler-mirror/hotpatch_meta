@@ -13,7 +13,7 @@
 类型选择：hotpatch
 
 描述：  问题类别：cve/bugfix/feature
-热补丁元数据：https://gitee.com/openeuler/hotpatch_meta/blob/master/{branch}/{repo}/{version}/hotmetadata_{ACC/SGL}.xml
+热补丁元数据：https://atomgit.com/openeuler/hotpatch_meta/blob/master/{branch}/{repo}/{version}/hotmetadata_{ACC/SGL}.xml
 
 ```
 - 提交pr还需要patch和元数据文件hotmetadata_ACC.xml/hotmetadata_SGL.xml 
@@ -29,7 +29,7 @@ version：基于哪个版本的源码制作热补丁
 hotmetadata_ACC.xml格式示例：
 ```xml
 <?xml version="1.0" ?>
-<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/hotpatch_meta">
+<ns0:hotpatchdoc xmlns:ns0="https://atomgit.com/openeuler/hotpatch_meta">
 	<DocumentTitle xml:lang="en" type="ACC">Managing Hot Patch Metadata</DocumentTitle>
 	<HotPatchList>
 		<Package name="源码仓库-版本号">
@@ -58,7 +58,7 @@ hotmetadata_ACC.xml格式示例：
 hotmetadata_SGL.xml格式示例：
 ```xml
 <?xml version="1.0" ?>
-<ns0:hotpatchdoc xmlns:ns0="https://gitee.com/openeuler/hotpatch_meta">
+<ns0:hotpatchdoc xmlns:ns0="https://atomgit.com/openeuler/hotpatch_meta">
 	<DocumentTitle xml:lang="en" type="SGL">Managing Hot Patch Metadata</DocumentTitle>
 	<HotPatchList>
 		<Package name="源码仓库-版本号">
