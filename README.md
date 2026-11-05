@@ -19,7 +19,7 @@
 - 提交pr还需要patch和元数据文件hotmetadata_ACC.xml/hotmetadata_SGL.xml 
   - patch文件是本次需要做热补丁的补丁文件，在本仓库路径为：{branch}/{repo}/{version}/patch/
   - 元数据文件hotmetadata_ACC.xml/hotmetadata_SGL.xml，ACC代表制作增量补丁，SGL代表制作单独补丁，根据需求修改对应的元数据文件
-  - 元数据文件hotmetadata_ACC.xml/hotmetadata_SGL.xml中记录了本次制作所需要的详细信息，格式示例参考下面，在本仓库路径为：{branch}/{repo}/{version}/hotmetadata.xml 
+  - 元数据文件hotmetadata_ACC.xml/hotmetadata_SGL.xml中记录了本次制作所需要的详细信息，格式示例参考下面，在本仓库路径为：{branch}/{repo}/{version}/hotmetadata_{ACC/SGL}.xml 
  ```text
 branch：基于哪个分支源码做热补丁
 repo：需要制作热补丁的源码仓库

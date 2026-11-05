@@ -19,7 +19,7 @@ Hot patch metadata: https://atomgit.com/openeuler/hotpatch_meta/blob/master/{bra
 - Submitting a PR also requires the patch files and metadata files hotmetadata_ACC.xml/hotmetadata_SGL.xml 
   - The patch files are the patches to build this hot patch from. In this repository they are located at: {branch}/{repo}/{version}/patch/
   - For metadata files hotmetadata_ACC.xml/hotmetadata_SGL.xml, ACC means building an incremental patch and SGL means building a standalone patch. Modify the corresponding metadata file as needed.
-  - The metadata files hotmetadata_ACC.xml/hotmetadata_SGL.xml record all details required for this build. See the format examples below. In this repository they are located at: {branch}/{repo}/{version}/hotmetadata.xml 
+  - The metadata files hotmetadata_ACC.xml/hotmetadata_SGL.xml record all details required for this build. See the format examples below. In this repository they are located at: {branch}/{repo}/{version}/hotmetadata_{ACC/SGL}.xml 
  ```text
 branch: the branch whose source code the hot patch is built from
 repo: the source repository the hot patch is built for
